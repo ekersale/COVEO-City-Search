@@ -1,0 +1,107 @@
+{
+  "id" : "COVEO-Countries-default",
+  "stages" : [ {
+    "type" : "javascript-index",
+    "id" : "z85",
+    "script" : "function(doc)\n{\n\tif (doc.hasField(\"body\"))\n    {\n        var value = doc.getFirstFieldValue(\"body\");\n        var arr = value.split(\"\\t\");\n        var location = arr[4] + \",\" + arr[5];\n        doc.addField(\"id\", arr[0]);\n        doc.addField(\"name_s\", arr[1]);\n        doc.addField(\"asciiname_s\", arr[2]);\n        doc.addField(\"alternateNames_ss\", arr[3]);    \t     \n        doc.addField(\"latitude_d\", arr[4]);    \t\n        doc.addField(\"longitude_d\", arr[5]);  \n        doc.addField(\"featureClass_s\", arr[6]);    \t      \n        doc.addField(\"featureCode_s\", arr[7]);    \t         \n        doc.addField(\"countryCode_s\", arr[8]);    \t      \n        doc.addField(\"countryCode2_s\", arr[9]);    \t      \n        doc.addField(\"fipscode_s\", arr[10]);    \t      \n        doc.addField(\"fipscode2_s\", arr[11]);    \t      \n        doc.addField(\"fipscode3_s\", arr[12]);    \t      \n        doc.addField(\"fipscode4_s\", arr[13]);    \t      \n        doc.addField(\"population_s\", arr[14]);    \t      \n        doc.addField(\"elevation_d\", arr[15]);    \t       \t\n        doc.addField(\"timezone_s\", arr[17]); \n        doc.addField(\"location_p\", location);\n    }\n  \n  \treturn doc;\n}",
+    "type" : "javascript-index",
+    "skip" : false,
+    "label" : "Parse doc body",
+    "secretSourceStageId" : "z85"
+  }, {
+    "type" : "javascript-index",
+    "id" : "yi",
+    "script" : "function(doc)\n{\n\tvar dico = {\n\"AF\":\"Afghanistan\",\n\"AX\":\"Aland Islands\",\n\"AL\":\"Albania\",\n\"DZ\":\"Algeria\",\n\"AS\":\"American Samoa\",\n\"AD\":\"Andorra\",\n\"AO\":\"Angola\",\n\"AI\":\"Anguilla\",\n\"AQ\":\"Antarctica\",\n\"AG\":\"Antigua and Barbuda\",\n\"AR\":\"Argentina\",\n\"AM\":\"Armenia\",\n\"AW\":\"Aruba\",\n\"AU\":\"Australia\",\n\"AT\":\"Austria\",\n\"AZ\":\"Azerbaijan\",\n\"BS\":\"Bahamas\",\n\"BH\":\"Bahrain\",\n\"BD\":\"Bangladesh\",\n\"BB\":\"Barbados\",\n\"BY\":\"Belarus\",\n\"BE\":\"Belgium\",\n\"BZ\":\"Belize\",\n\"BJ\":\"Benin\",\n\"BM\":\"Bermuda\",\n\"BT\":\"Bhutan\",\n\"BO\":\"Bolivia\",\n\"BA\":\"Bosnia and Herzegovina\",\n\"BW\":\"Botswana\",\n\"BV\":\"Bouvet Island\",\n\"BR\":\"Brazil\",\n\"VG\":\"British Virgin Islands\",\n\"IO\":\"British Indian Ocean Territory\",\n\"BN\":\"Brunei Darussalam\",\n\"BG\":\"Bulgaria\",\n\"BF\":\"Burkina Faso\",\n\"BI\":\"Burundi\",\n\"KH\":\"Cambodia\",\n\"CM\":\"Cameroon\",\n\"CA\":\"Canada\",\n\"CV\":\"Cape Verde\",\n\"KY\":\"Cayman Islands\",\n\"CF\":\"Central African Republic\",\n\"TD\":\"Chad\",\n\"CL\":\"Chile\",\n\"CN\":\"China\",\n\"HK\":\"Hong Kong, SAR China\",\n\"MO\":\"Macao, SAR China\",\n\"CX\":\"Christmas Island\",\n\"CC\":\"Cocos (Keeling) Islands\",\n\"CO\":\"Colombia\",\n\"KM\":\"Comoros\",\n\"CG\":\"Congo (Brazzaville)\",\n\"CD\":\"Congo, (Kinshasa)\",\n\"CK\":\"Cook Islands\",\n\"CR\":\"Costa Rica\",\n\"CI\":\"Côte d'Ivoire\",\n\"HR\":\"Croatia\",\n\"CU\":\"Cuba\",\n\"CY\":\"Cyprus\",\n\"CZ\":\"Czech Republic\",\n\"DK\":\"Denmark\",\n\"DJ\":\"Djibouti\",\n\"DM\":\"Dominica\",\n\"DO\":\"Dominican Republic\",\n\"EC\":\"Ecuador\",\n\"EG\":\"Egypt\",\n\"SV\":\"El Salvador\",\n\"GQ\":\"Equatorial Guinea\",\n\"ER\":\"Eritrea\",\n\"EE\":\"Estonia\",\n\"ET\":\"Ethiopia\",\n\"FK\":\"Falkland Islands (Malvinas)\",\n\"FO\":\"Faroe Islands\",\n\"FJ\":\"Fiji\",\n\"FI\":\"Finland\",\n\"FR\":\"France\",\n\"GF\":\"French Guiana\",\n\"PF\":\"French Polynesia\",\n\"TF\":\"French Southern Territories\",\n\"GA\":\"Gabon\",\n\"GM\":\"Gambia\",\n\"GE\":\"Georgia\",\n\"DE\":\"Germany\",\n\"GH\":\"Ghana\",\n\"GI\":\"Gibraltar\",\n\"GR\":\"Greece\",\n\"GL\":\"Greenland\",\n\"GD\":\"Grenada\",\n\"GP\":\"Guadeloupe\",\n\"GU\":\"Guam\",\n\"GT\":\"Guatemala\",\n\"GG\":\"Guernsey\",\n\"GN\":\"Guinea\",\n\"GW\":\"Guinea-Bissau\",\n\"GY\":\"Guyana\",\n\"HT\":\"Haiti\",\n\"HM\":\"Heard and Mcdonald Islands\",\n\"VA\":\"Holy See (Vatican City State)\",\n\"HN\":\"Honduras\",\n\"HU\":\"Hungary\",\n\"IS\":\"Iceland\",\n\"IN\":\"India\",\n\"ID\":\"Indonesia\",\n\"IR\":\"Iran, Islamic Republic of\",\n\"IQ\":\"Iraq\",\n\"IE\":\"Ireland\",\n\"IM\":\"Isle of Man\",\n\"IL\":\"Israel\",\n\"IT\":\"Italy\",\n\"JM\":\"Jamaica\",\n\"JP\":\"Japan\",\n\"JE\":\"Jersey\",\n\"JO\":\"Jordan\",\n\"KZ\":\"Kazakhstan\",\n\"KE\":\"Kenya\",\n\"KI\":\"Kiribati\",\n\"KP\":\"Korea (North)\",\n\"KR\":\"Korea (South)\",\n\"KW\":\"Kuwait\",\n\"KG\":\"Kyrgyzstan\",\n\"LA\":\"Lao PDR\",\n\"LV\":\"Latvia\",\n\"LB\":\"Lebanon\",\n\"LS\":\"Lesotho\",\n\"LR\":\"Liberia\",\n\"LY\":\"Libya\",\n\"LI\":\"Liechtenstein\",\n\"LT\":\"Lithuania\",\n\"LU\":\"Luxembourg\",\n\"MK\":\"Macedonia, Republic of\",\n\"MG\":\"Madagascar\",\n\"MW\":\"Malawi\",\n\"MY\":\"Malaysia\",\n\"MV\":\"Maldives\",\n\"ML\":\"Mali\",\n\"MT\":\"Malta\",\n\"MH\":\"Marshall Islands\",\n\"MQ\":\"Martinique\",\n\"MR\":\"Mauritania\",\n\"MU\":\"Mauritius\",\n\"YT\":\"Mayotte\",\n\"MX\":\"Mexico\",\n\"FM\":\"Micronesia, Federated States of\",\n\"MD\":\"Moldova\",\n\"MC\":\"Monaco\",\n\"MN\":\"Mongolia\",\n\"ME\":\"Montenegro\",\n\"MS\":\"Montserrat\",\n\"MA\":\"Morocco\",\n\"MZ\":\"Mozambique\",\n\"MM\":\"Myanmar\",\n\"NA\":\"Namibia\",\n\"NR\":\"Nauru\",\n\"NP\":\"Nepal\",\n\"NL\":\"Netherlands\",\n\"AN\":\"Netherlands Antilles\",\n\"NC\":\"New Caledonia\",\n\"NZ\":\"New Zealand\",\n\"NI\":\"Nicaragua\",\n\"NE\":\"Niger\",\n\"NG\":\"Nigeria\",\n\"NU\":\"Niue\",\n\"NF\":\"Norfolk Island\",\n\"MP\":\"Northern Mariana Islands\",\n\"NO\":\"Norway\",\n\"OM\":\"Oman\",\n\"PK\":\"Pakistan\",\n\"PW\":\"Palau\",\n\"PS\":\"Palestinian Territory\",\n\"PA\":\"Panama\",\n\"PG\":\"Papua New Guinea\",\n\"PY\":\"Paraguay\",\n\"PE\":\"Peru\",\n\"PH\":\"Philippines\",\n\"PN\":\"Pitcairn\",\n\"PL\":\"Poland\",\n\"PT\":\"Portugal\",\n\"PR\":\"Puerto Rico\",\n\"QA\":\"Qatar\",\n\"RE\":\"Réunion\",\n\"RO\":\"Romania\",\n\"RU\":\"Russian Federation\",\n\"RW\":\"Rwanda\",\n\"BL\":\"Saint-Barthélemy\",\n\"SH\":\"Saint Helena\",\n\"KN\":\"Saint Kitts and Nevis\",\n\"LC\":\"Saint Lucia\",\n\"MF\":\"Saint-Martin (French part)\",\n\"PM\":\"Saint Pierre and Miquelon\",\n\"VC\":\"Saint Vincent and Grenadines\",\n\"WS\":\"Samoa\",\n\"SM\":\"San Marino\",\n\"ST\":\"Sao Tome and Principe\",\n\"SA\":\"Saudi Arabia\",\n\"SN\":\"Senegal\",\n\"RS\":\"Serbia\",\n\"SC\":\"Seychelles\",\n\"SL\":\"Sierra Leone\",\n\"SG\":\"Singapore\",\n\"SK\":\"Slovakia\",\n\"SI\":\"Slovenia\",\n\"SB\":\"Solomon Islands\",\n\"SO\":\"Somalia\",\n\"ZA\":\"South Africa\",\n\"GS\":\"South Georgia and the South Sandwich Islands\",\n\"SS\":\"South Sudan\",\n\"ES\":\"Spain\",\n\"LK\":\"Sri Lanka\",\n\"SD\":\"Sudan\",\n\"SR\":\"Suriname\",\n\"SJ\":\"Svalbard and Jan Mayen Islands\",\n\"SZ\":\"Swaziland\",\n\"SE\":\"Sweden\",\n\"CH\":\"Switzerland\",\n\"SY\":\"Syrian Arab Republic (Syria)\",\n\"TW\":\"Taiwan, Republic of China\",\n\"TJ\":\"Tajikistan\",\n\"TZ\":\"Tanzania, United Republic of\",\n\"TH\":\"Thailand\",\n\"TL\":\"Timor-Leste\",\n\"TG\":\"Togo\",\n\"TK\":\"Tokelau\",\n\"TO\":\"Tonga\",\n\"TT\":\"Trinidad and Tobago\",\n\"TN\":\"Tunisia\",\n\"TR\":\"Turkey\",\n\"TM\":\"Turkmenistan\",\n\"TC\":\"Turks and Caicos Islands\",\n\"TV\":\"Tuvalu\",\n\"UG\":\"Uganda\",\n\"UA\":\"Ukraine\",\n\"AE\":\"United Arab Emirates\",\n\"GB\":\"United Kingdom\",\n\"US\":\"United States of America\",\n\"UM\":\"US Minor Outlying Islands\",\n\"UY\":\"Uruguay\",\n\"UZ\":\"Uzbekistan\",\n\"VU\":\"Vanuatu\",\n\"VE\":\"Venezuela (Bolivarian Republic)\",\n\"VN\":\"Viet Nam\",\n\"VI\":\"Virgin Islands, US\",\n\"WF\":\"Wallis and Futuna Islands\",\n\"EH\":\"Western Sahara\",\n\"YE\":\"Yemen\",\n\"ZM\":\"Zambia\",\n\"ZW\":\"Zimbabwe\"\n      };\n  \tif (doc.hasField(\"countryCode_s\"))\n    {\n        var value = doc.getFirstFieldValue(\"countryCode_s\");\n        var country = dico[value];\n        doc.addField(\"country_s\", country);\n    }\n  return doc;\n}",
+    "type" : "javascript-index",
+    "skip" : false,
+    "label" : "Map Country Code With Country",
+    "secretSourceStageId" : "yi"
+  }, {
+    "type" : "javascript-index",
+    "id" : "cpf",
+    "script" : "function(doc)\n{\n\tvar dico = {\n      \"01\":\"AL\",\n      \"02\":\"BC\",\n      \"03\":\"MB\",\n      \"04\":\"NB\",\n      \"05\":\"NL\",\n      \"07\":\"NS\",\n      \"13\":\"NT\",\n      \"14\":\"NU\",\n      \"08\":\"ON\",\n      \"09\":\"PE\",\n      \"10\":\"QC\",\n      \"11\":\"SK\",\n      \"12\":\"YT\"\n    };\n    \n    if (doc.hasField(\"countryCode_s\"))\n    {\n      var country = doc.getFirstFieldValue(\"countryCode_s\");\n      if (country == \"CA\")\n      {\n\t\tvar country = doc.getFirstFieldValue(\"countryCode_s\");\n        var fips = doc.getFirstFieldValue(\"fipscode_s\");\n        \n        var code = dico[fips];\n        doc.setField(\"fipscode_s\", code);\n      }\n    }\n  return doc;\n}",
+    "type" : "javascript-index",
+    "skip" : false,
+    "label" : "Map FIPS CANADA",
+    "secretSourceStageId" : "cpf"
+  }, {
+    "type" : "javascript-index",
+    "id" : "9fn",
+    "script" : "function(doc)\n{\n\tvar name = doc.getFirstFieldValue(\"name_s\");\n    var fips = doc.getFirstFieldValue(\"fipscode_s\");\n  \tvar country = doc.getFirstFieldValue(\"country_s\");\n\tdoc.addField(\"name\", name + \", \" + fips + \", \" + country);\n  \treturn doc;\n}",
+    "type" : "javascript-index",
+    "skip" : false,
+    "label" : "Map Full Name",
+    "secretSourceStageId" : "9fn"
+  }, {
+    "type" : "field-mapping",
+    "id" : "9fbdf46e-51d6-449b-99aa-f87f4bd78a08",
+    "mappings" : [ {
+      "source" : "id",
+      "operation" : "keep"
+    }, {
+      "source" : "name_s",
+      "operation" : "keep"
+    }, {
+      "source" : "asciiname_s",
+      "operation" : "keep"
+    }, {
+      "source" : "alternateNames_ss",
+      "operation" : "keep"
+    }, {
+      "source" : "latitude_d",
+      "operation" : "keep"
+    }, {
+      "source" : "longitude_d",
+      "operation" : "keep"
+    }, {
+      "source" : "featureClass_s",
+      "operation" : "keep"
+    }, {
+      "source" : "countryCode_s",
+      "operation" : "keep"
+    }, {
+      "source" : "countryCode2_s",
+      "operation" : "keep"
+    }, {
+      "source" : "fipscode_s",
+      "operation" : "keep"
+    }, {
+      "source" : "fipscode2_s",
+      "operation" : "keep"
+    }, {
+      "source" : "country_s",
+      "operation" : "keep"
+    }, {
+      "source" : "timezone_s",
+      "operation" : "keep"
+    }, {
+      "source" : "location_p",
+      "target" : "",
+      "operation" : "keep"
+    }, {
+      "source" : "name",
+      "operation" : "keep"
+    } ],
+    "unmapped" : {
+      "source" : "/(.*)/",
+      "operation" : "delete"
+    },
+    "reservedFieldsMappingAllowed" : true,
+    "type" : "field-mapping",
+    "skip" : false,
+    "secretSourceStageId" : "9fbdf46e-51d6-449b-99aa-f87f4bd78a08"
+  }, {
+    "type" : "solr-index",
+    "id" : "0f5b4dcc-5e48-4700-9684-c953f569026f",
+    "enforceSchema" : true,
+    "dateFormats" : [ ],
+    "params" : [ ],
+    "bufferDocsForSolr" : true,
+    "type" : "solr-index",
+    "skip" : false,
+    "secretSourceStageId" : "0f5b4dcc-5e48-4700-9684-c953f569026f"
+  } ],
+  "properties" : {
+    "secretSourcePipelineId" : "COVEO-Countries-default"
+  }
+}

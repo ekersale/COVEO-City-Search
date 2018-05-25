@@ -1,0 +1,99 @@
+{
+  "id" : "COVEO-Countries-default",
+  "stages" : [ {
+    "type" : "set-params",
+    "id" : "jgb",
+    "params" : [ {
+      "key" : "wt",
+      "value" : "json",
+      "policy" : "append"
+    }, {
+      "key" : "q.op",
+      "value" : "AND",
+      "policy" : "append"
+    }, {
+      "key" : "q.alt",
+      "value" : "*:*",
+      "policy" : "append"
+    }, {
+      "key" : "defType",
+      "value" : "edismax",
+      "policy" : "append"
+    }, {
+      "key" : "echoParams",
+      "value" : "explicit",
+      "policy" : "default"
+    }, {
+      "key" : "sfield",
+      "value" : "location_p",
+      "policy" : "append"
+    }, {
+      "key" : "longitude",
+      "value" : "200",
+      "policy" : "default"
+    }, {
+      "key" : "latitude",
+      "value" : "200",
+      "policy" : "default"
+    } ],
+    "type" : "set-params",
+    "skip" : false,
+    "secretSourceStageId" : "jgb"
+  }, {
+    "type" : "javascript-query",
+    "id" : "6",
+    "script" : "var latitude = request.getParam(\"latitude\");\nvar longitude = request.getParam(\"longitude\");\nvar isSet = false;\nvar pt = \"\";\n\nif (latitude[0] != 200)\n{\n  pt = pt + latitude[0];\n  isSet = true;\n}\nelse { pt += 0; }\n\npt = pt + \",\";\n\nif (longitude[0] != 200)\n{\n  pt = pt + longitude[0];\n  isSet = true;\n}\nelse { pt = pt + 0; }\n\nif (isSet == true)\n{\n\trequest.addParam(\"pt\", pt);\n    request.addParam(\"sort\", \"geodist() asc\");\n}",
+    "type" : "javascript-query",
+    "skip" : false,
+    "secretSourceStageId" : "6"
+  }, {
+    "type" : "search-fields",
+    "id" : "abedae80-4044-4d1f-84db-4bda68dce4e8",
+    "rows" : 10,
+    "start" : 0,
+    "queryFields" : [ {
+      "field" : "name_txt_name",
+      "boost" : 100.0
+    }, {
+      "field" : "name_txt_pho",
+      "boost" : 1.0
+    }, {
+      "field" : "country_txt_en",
+      "boost" : 1.0
+    }, {
+      "field" : "name_txt_en",
+      "boost" : 1000.0
+    } ],
+    "returnFields" : [ "score", "latitude_d", "longitude_d", "name" ],
+    "minimumMatch" : "",
+    "type" : "search-fields",
+    "skip" : false,
+    "secretSourceStageId" : "abedae80-4044-4d1f-84db-4bda68dce4e8"
+  }, {
+    "type" : "facet",
+    "id" : "f57b184f-8f5d-448a-8224-899b997b0fff",
+    "fieldFacets" : [ {
+      "field" : "country_s",
+      "minCount" : 1,
+      "missing" : false
+    } ],
+    "type" : "facet",
+    "skip" : false,
+    "secretSourceStageId" : "f57b184f-8f5d-448a-8224-899b997b0fff",
+    "properties" : {
+      "autoCreated" : true
+    }
+  }, {
+    "type" : "solr-query",
+    "id" : "ef8d0ab7-120a-42f7-86ce-01ccf0af2544",
+    "allowedRequestHandlers" : [ ],
+    "httpMethod" : "POST",
+    "allowFederatedSearch" : false,
+    "type" : "solr-query",
+    "skip" : false,
+    "secretSourceStageId" : "ef8d0ab7-120a-42f7-86ce-01ccf0af2544"
+  } ],
+  "properties" : {
+    "secretSourcePipelineId" : "COVEO-Countries-default"
+  }
+}

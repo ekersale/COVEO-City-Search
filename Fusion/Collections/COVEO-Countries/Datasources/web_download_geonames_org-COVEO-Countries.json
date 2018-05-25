@@ -1,0 +1,107 @@
+{
+  "id" : "web_download_geonames_org-COVEO-Countries",
+  "created" : "2018-05-25T16:35:00.086Z",
+  "modified" : "2018-05-25T16:35:00.086Z",
+  "connector" : "lucid.web",
+  "type" : "web",
+  "pipeline" : "COVEO-Countries-default",
+  "parserId" : "web_download_geonames_org-COVEO-Countries",
+  "properties" : {
+    "refreshOlderThan" : -1,
+    "f.appendTrailingSlashToLinks" : false,
+    "refreshErrors" : false,
+    "restrictToTreeIgnoredHostPrefixes" : [ "www." ],
+    "dedupeSaveSignature" : false,
+    "crawlDBType" : "in-memory",
+    "f.discardLinkURLQueries" : false,
+    "fetchDelayMS" : 0,
+    "f.respectMetaEquivRedirects" : false,
+    "refreshAll" : true,
+    "f.defaultMIMEType" : "application/octet-stream",
+    "f.jsPageLoadTimeout" : 10000,
+    "restrictToTreeAllowSubdomains" : false,
+    "f.jsScriptTimeout" : 10000,
+    "maxItems" : -1,
+    "f.jsAjaxTimeout" : 10000,
+    "dedupe" : false,
+    "f.scrapeLinksBeforeFiltering" : false,
+    "trackEmbeddedIDs" : true,
+    "f.allowAllCertificates" : false,
+    "collection" : "COVEO-Countries",
+    "forceRefresh" : false,
+    "f.obeyRobots" : true,
+    "parserRetryCount" : 0,
+    "fetchDelayMSPerHost" : true,
+    "fetchThreads" : 5,
+    "indexCrawlDBToSolr" : false,
+    "retainOutlinks" : false,
+    "restrictToTree" : true,
+    "f.defaultCharSet" : "UTF-8",
+    "emitThreads" : 5,
+    "diagnosticMode" : false,
+    "delete" : true,
+    "initial_mapping" : {
+      "id" : "FromMap",
+      "mappings" : [ {
+        "source" : "charSet",
+        "target" : "charSet_s",
+        "operation" : "move"
+      }, {
+        "source" : "fetchedDate",
+        "target" : "fetchedDate_dt",
+        "operation" : "move"
+      }, {
+        "source" : "lastModified",
+        "target" : "lastModified_dt",
+        "operation" : "move"
+      }, {
+        "source" : "signature",
+        "target" : "dedupeSignature_s",
+        "operation" : "move"
+      }, {
+        "source" : "contentSignature",
+        "target" : "signature_s",
+        "operation" : "move"
+      }, {
+        "source" : "length",
+        "target" : "length_l",
+        "operation" : "move"
+      }, {
+        "source" : "mimeType",
+        "target" : "mimeType_s",
+        "operation" : "move"
+      }, {
+        "source" : "parent",
+        "target" : "parent_s",
+        "operation" : "move"
+      }, {
+        "source" : "owner",
+        "target" : "owner_s",
+        "operation" : "move"
+      }, {
+        "source" : "group",
+        "target" : "group_s",
+        "operation" : "move"
+      } ],
+      "reservedFieldsMappingAllowed" : false,
+      "type" : "field-mapping",
+      "skip" : false
+    },
+    "restrictToTreeUseHostAndPath" : false,
+    "f.filteringRootTags" : [ "body", "head" ],
+    "startLinks" : [ "http://download.geonames.org/export/dump/US.zip", "http://download.geonames.org/export/dump/CA.zip", "http://download.geonames.org/export/dump/FR.zip" ],
+    "failFastOnStartLinkFailure" : true,
+    "f.timeoutMS" : 10000,
+    "chunkSize" : 1,
+    "f.obeyRobotsDelay" : true,
+    "deleteErrorsAfter" : -1,
+    "f.userAgentName" : "Lucidworks-Anda/2.0",
+    "retryEmit" : true,
+    "f.crawlJS" : false,
+    "depth" : -1,
+    "f.cookieSpec" : "browser-compatibility",
+    "refreshStartLinks" : false,
+    "f.maxSizeBytes" : 4194304,
+    "aliasExpiration" : 1
+  }
+}
