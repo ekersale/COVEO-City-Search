@@ -2,9 +2,13 @@
 Search city with by queries
 
 Search API : http://35.203.39.194:8764/cities/suggestions
+
 Search Route Queries: 
+
   q - search query
+  
   latitude - boost near latitude
+  
   longitude - boost near longitude
 
 Monitoring API : http://35.203.39.194:9000
