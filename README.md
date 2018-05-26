@@ -14,8 +14,13 @@ Fusion admin panel: http://35.203.39.194:8764
 ## Used tools
 
 NodeJS : Compiler
+
 Mocha : Test
+
 ExpressJS : Router
+
 pm2 : Prod Monitoring
+
 pm2-web : Web Monitoring
+
 Fusion Lucidworks : Search Engine v3.1.2
