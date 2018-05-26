@@ -8,6 +8,7 @@ Search Route Queries:
   longitude - boost near longitude
 
 Monitoring API : http://35.203.39.194:9000
+
 Fusion admin panel: http://35.203.39.194:8764
 
 ## Used tools
