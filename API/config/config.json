@@ -1,0 +1,7 @@
+{
+    "fusion": {
+        "endpoint": "http://35.203.39.194:8764/api/apollo",
+        "username": "admin",
+        "password": "Passw0rdCoveo"
+    }
+}
