@@ -1,7 +1,7 @@
 const request = require('request');
 const config = require('../../config/config.json');
 
-/* GET City Search. */
+/* Http GET Fusion. */
 function get(url, callback)
 {
     const buffer = new Buffer(config.fusion.username + ":" + config.fusion.password);
