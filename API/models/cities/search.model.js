@@ -1,20 +1,16 @@
-const request = require('request');
-const config = require('../../config/config.json');
+var http = require("../../models/helpers/http.model");
 
 /* GET City Search. */
 function search(q = "", longitude = 200, latitude = 200, callback)
 {
-    const buffer = new Buffer(config.fusion.username + ":" + config.fusion.password);
-    const pwd = buffer.toString('base64');
 
-    return request(`${config.fusion.endpoint}/query-pipelines/COVEO-Countries-default/collections/COVEO-Countries/select?&q=${q}&latitude=${latitude}&longitude=${longitude}`, 
-            { json: true, headers: { Authorization: `Basic ${pwd}` } }, 
-            (err, res, body) => 
-            {
-                if (err) { 
-                    callback(err);
-                }
+    var url = `/query-pipelines/COVEO-Countries-default/collections/COVEO-Countries/select?&q=${q}&latitude=${latitude}&longitude=${longitude}`;
 
+    http.get(url, 
+             function(err, body)
+             {
+                if (err != null) callback(err);
+                 
                 var data = {
                     facets: (typeof body.facet_counts !== 'undefined') ? 
                                 (typeof body.facet_counts.facet_fields !== 'undefined') ? 
@@ -28,7 +24,7 @@ function search(q = "", longitude = 200, latitude = 200, callback)
                                 []
                 };
                 callback(data);
-            }
+             }
     );
 }
 
