@@ -1,7 +1,7 @@
 # COVEO-City-Search
 Search city with by queries
 
-Search API : http://35.203.39.194:8764/cities/suggestions
+Search API : http://35.203.39.194:3000/cities/suggestions
 
 Search Route Queries: 
 
